@@ -1,4 +1,4 @@
-name: Unit Test
+name: Build Main Branch
 on:
   push:
     branches: [ main ]
@@ -19,7 +19,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Execute Gradle build
+      - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 7.4.2
