@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cerror.test.basic.BooleanTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-06-22T22:01:21" hostname="CERROR-24601" time="0.046">
-  <properties/>
-  <testcase name="assert function should check the condition()" classname="com.cerror.test.basic.BooleanTest" time="0.045"/>
-  <testcase name="alias function should work()" classname="com.cerror.test.basic.BooleanTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
