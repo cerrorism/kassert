@@ -1,4 +1,3 @@
-
 plugins {
     kotlin("jvm") version Kotlin.version
     jacoco
@@ -31,4 +30,11 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
 
 jacoco {
     toolVersion = "0.8.8"
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        csv.required.set(false)
+    }
 }
