@@ -9,5 +9,5 @@ fun <T> T?.`should be null`() {
 }
 
 fun <T> T?.`should not be null`() {
-    assertFalse(this == null, failureDescription("Value should be null", null, this))
+    assertFalse(this == null, "Value should not be null")
 }

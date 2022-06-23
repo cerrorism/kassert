@@ -31,7 +31,7 @@ class EqualityTest {
             exception.message `should be equal to` """
                 Values should be equal
                 | Expected: $obj2
-                | Actual: $obj1 
+                | Actual: $obj1
             """.trimIndent()
         }
     }
