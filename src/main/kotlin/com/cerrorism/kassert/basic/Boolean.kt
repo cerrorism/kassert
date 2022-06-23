@@ -1,5 +1,6 @@
 @file:Suppress("FunctionName")
-package com.cerror.test.basic
+
+package com.cerrorism.kassert.basic
 
 import kotlin.test.fail
 

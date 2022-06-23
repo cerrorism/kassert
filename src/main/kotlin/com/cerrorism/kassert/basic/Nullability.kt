@@ -1,7 +1,8 @@
 @file:Suppress("FunctionName")
-package com.cerror.test.basic
 
-import com.cerror.test.util.failureDescription
+package com.cerrorism.kassert.basic
+
+import com.cerrorism.kassert.util.failureDescription
 
 fun <T> T?.`should be null`() {
     assertTrue(this == null, failureDescription("Value should be null", null, this))

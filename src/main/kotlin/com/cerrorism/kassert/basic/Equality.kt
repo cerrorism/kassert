@@ -1,7 +1,8 @@
 @file:Suppress("FunctionName")
-package com.cerror.test.basic
 
-import com.cerror.test.util.failureDescription
+package com.cerrorism.kassert.basic
+
+import com.cerrorism.kassert.util.failureDescription
 
 infix fun <T> T.`should be equal to`(expected: T?) {
     assertTrue(this == expected, failureDescription("Values should be equal", expected, this))

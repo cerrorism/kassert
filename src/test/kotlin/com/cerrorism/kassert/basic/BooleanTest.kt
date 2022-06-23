@@ -1,6 +1,7 @@
-package com.cerror.test.basic
+package com.cerrorism.kassert.basic
 
-import org.junit.jupiter.api.Assertions
+import com.cerrorism.kassert.exception.invoking
+import com.cerrorism.kassert.exception.`should throw`
 import org.junit.jupiter.api.Test
 
 class BooleanTest {
@@ -9,12 +10,12 @@ class BooleanTest {
 
         assertTrue(true)
         assertFalse(false)
-        Assertions.assertThrows(AssertionError::class.java) {
+        invoking {
             assertTrue(false, "this should fail")
-        }
-        Assertions.assertThrows(AssertionError::class.java) {
+        } `should throw` AssertionError::class
+        invoking {
             assertFalse(true, "this should fail")
-        }
+        } `should throw` AssertionError::class
     }
 
     @Test
