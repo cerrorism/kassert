@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version Kotlin.version
+    id("org.jetbrains.dokka") version Kotlin.version
     jacoco
 }
 
