@@ -2,6 +2,8 @@
 
 package com.cerrorism.kassert.basic
 
+import kotlin.test.fail
+
 fun assertTrue(actual: Boolean, message: String? = null) {
     if (!actual) {
         fail(message)

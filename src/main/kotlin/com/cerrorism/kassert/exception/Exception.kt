@@ -2,8 +2,8 @@
 
 package com.cerrorism.kassert.exception
 
-import com.cerrorism.kassert.basic.fail
 import kotlin.reflect.KClass
+import kotlin.test.fail
 
 interface Function {
     fun run()
