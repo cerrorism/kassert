@@ -17,3 +17,8 @@ to make the assertion more human-readable.
   in unit tests are more like a description of the functionalities.
 * I removed the Junit dependency. Kassert only depends on the kotlin
   standard library and kotlin-test package.
+
+## How to use Kassert
+
+The unit tests of Kassert can be used as examples, which can be found under
+`/src/test/kotlin` folder.
