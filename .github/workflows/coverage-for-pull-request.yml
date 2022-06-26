@@ -1,4 +1,4 @@
-name: Meature coverage for pull request
+name: Coverage for pull request
 on:
   pull_request:
 
@@ -15,7 +15,20 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew test
-
+      - name: Archive test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-report
+          retention-days: 5
+          path: |
+            build/reports/tests/test/*
+      - name: Archive jacoco results
+        uses: actions/upload-artifact@v3
+        with:
+          name: jacoco-report
+          retention-days: 5
+          path: |
+            build/reports/jacoco/test/html/*
       - name: Add coverage to PR
         id: jacoco
         uses: madrapps/jacoco-report@v1.2

@@ -1,26 +1,20 @@
-@file:Suppress("FunctionName")
+@file:Suppress("FunctionName", "TooGenericExceptionCaught")
 
 package com.cerrorism.kassert.exception
 
 import kotlin.reflect.KClass
 import kotlin.test.fail
 
-interface Function {
-    fun run()
-}
 
-fun invoking(function: () -> Any?): Function {
-    return object : Function {
-        override fun run() {
-            function()
-        }
-    }
+typealias  Function = () -> Any?
+
+fun invoking(function: Function): Function {
+    return function
 }
 
 inline infix fun <reified T : Throwable> Function.`should throw`(expectedException: KClass<T>): ExceptionResult<T> {
     try {
-        this.apply { }
-        this.run()
+        this.invoke()
     } catch (e: Throwable) {
         when (e) {
             is T -> return ExceptionResult(e)
@@ -32,15 +26,16 @@ inline infix fun <reified T : Throwable> Function.`should throw`(expectedExcepti
 
 fun Function.`should not throw`() {
     try {
-        this.run()
+        this.invoke()
     } catch (e: Throwable) {
         fail("Expected no Exception to be thrown. Actual: ${e::class}")
     }
 }
 
-inline infix fun <reified T : Throwable> Function.`should not throw`(expectedException: KClass<T>): NotThrownExceptionResult {
+inline infix fun <reified T : Throwable> Function.`should not throw`(expectedException: KClass<T>):
+        NotThrownExceptionResult {
     return try {
-        this.run()
+        this.invoke()
         NotThrownExceptionResult()
     } catch (e: Throwable) {
         if (e is T) {

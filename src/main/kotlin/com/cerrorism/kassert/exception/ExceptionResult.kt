@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName")
+
 package com.cerrorism.kassert.exception
 
 import com.cerrorism.kassert.basic.`should be equal to`

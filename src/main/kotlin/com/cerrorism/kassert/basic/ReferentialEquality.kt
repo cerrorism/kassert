@@ -4,10 +4,12 @@ package com.cerrorism.kassert.basic
 
 import com.cerrorism.kassert.util.failureDescription
 
-infix fun <T> T.`should be`(expected: T?) {
+infix fun <T> T.`should be`(expected: T?): T {
     assertTrue(this === expected, failureDescription("References should be the same", expected, this))
+    return this
 }
 
-infix fun <T> T.`should not be`(expected: T?) {
+infix fun <T> T.`should not be`(expected: T?): T {
     assertFalse(this === expected, failureDescription("References should not be the same", expected, this))
+    return this
 }
