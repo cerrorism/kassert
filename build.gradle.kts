@@ -1,6 +1,9 @@
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+
 plugins {
     kotlin("jvm") version Kotlin.version
-    id("org.jetbrains.dokka") version Kotlin.version
+    id("io.gitlab.arturbosch.detekt").version(Kotlin.deteKtVersion)
     jacoco
     `maven-publish`
     signing
@@ -28,11 +31,13 @@ tasks.jacocoTestReport {
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = Jvm.version
+    kotlinOptions {
+        jvmTarget = Jvm.version
+    }
 }
 
 jacoco {
-    toolVersion = "0.8.8"
+    toolVersion = Jvm.jacocoVersion
 }
 
 tasks.jacocoTestReport {
@@ -52,7 +57,7 @@ publishing {
         create<MavenPublication>("kassertLib") {
             groupId = "io.github.cerrorism"
             artifactId = "kassert"
-            version = Kotlin.version
+            version = Kassert.release
 
             pom {
                 name.set("Kassert Library")
@@ -107,9 +112,15 @@ signing {
     sign(publishing.publications["kassertLib"])
 }
 
-tasks.javadoc {
-    if (JavaVersion.current().isJava9Compatible) {
-        (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
+tasks.withType<Detekt>().configureEach {
+    reports {
+        html.required.set(true)
+        xml.required.set(true)
+        txt.required.set(true)
     }
+    jvmTarget = Jvm.version
+}
+tasks.withType<DetektCreateBaselineTask>().configureEach {
+    jvmTarget = Jvm.version
 }
 
