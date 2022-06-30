@@ -57,7 +57,7 @@ publishing {
         create<MavenPublication>("kassertLib") {
             groupId = "io.github.cerrorism"
             artifactId = "kassert"
-            version = System.getenv("GITHUB_REF")
+            version = System.getenv("GITHUB_REF_NAME")
 
             pom {
                 name.set("Kassert Library")

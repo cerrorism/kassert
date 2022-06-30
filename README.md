@@ -1,6 +1,7 @@
 # Kassert
 
 ![Build Status](https://github.com/cerrorism/kassert/actions/workflows/build-main.yml/badge.svg)
+![Code Scan Status](https://github.com/cerrorism/kassert/actions/workflows/detekt.yml/badge.svg)
 
 Kassert is an assertion library for Kotlin. It is a rewritten and
 simplified version of [Kluent](https://markusamshove.github.io/Kluent/).
@@ -18,7 +19,23 @@ to make the assertion more human-readable.
 * I removed the Junit dependency. Kassert only depends on the kotlin
   standard library and kotlin-test package.
 
-## How to use Kassert
+## Maven
+
+To use the package, you need to use the following Maven dependency:
+
+```xml
+
+<dependency>
+    <groupId>io.github.cerrorism</groupId>
+    <artifactId>kassert</artifactId>
+    <version>{release-version}</version>
+</dependency>
+```
+
+This library is available on both [Maven Central](https://search.maven.org/artifact/io.github.cerrorism/kassert)
+and [GitHub Package](https://github.com/cerrorism/kassert/packages/1503635).
+
+## Documentation
 
 The unit tests of Kassert can be used as examples, which can be found under
 `/src/test/kotlin` folder.
