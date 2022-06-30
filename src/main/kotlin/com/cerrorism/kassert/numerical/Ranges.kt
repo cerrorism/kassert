@@ -19,7 +19,7 @@ fun <T : Comparable<T>> T.`should be in range`(lowerBound: T, upperBound: T): T 
 infix fun <T : Comparable<T>> T.`should not be in range`(range: ClosedRange<T>): T {
     assertTrue(
         this !in range,
-        "Expected $this to not be between (and including) ${range.start} and $${range.endInclusive}"
+        "Expected $this to not be between (and including) ${range.start} and ${range.endInclusive}"
     )
     return this
 }

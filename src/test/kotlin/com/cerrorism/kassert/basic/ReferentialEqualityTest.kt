@@ -1,8 +1,8 @@
 package com.cerrorism.kassert.basic
 
-import com.cerrorism.kassert.exception.and
 import com.cerrorism.kassert.exception.invoking
 import com.cerrorism.kassert.exception.`should throw`
+import com.cerrorism.kassert.exception.`with message`
 import org.junit.jupiter.api.Test
 
 class ReferentialEqualityTest {
@@ -15,13 +15,11 @@ class ReferentialEqualityTest {
         value1 `should be` value2
         invoking {
             value1 `should not be` value2
-        } `should throw` AssertionError::class and {
-            exception.message `should be equal to` """
+        } `should throw` AssertionError::class `with message` """
                 References should not be the same
                 | Expected: TestDataClass(first=foo, second=bar)
                 | Actual: TestDataClass(first=foo, second=bar)
             """.trimIndent()
-        }
     }
 
     @Test
@@ -31,12 +29,10 @@ class ReferentialEqualityTest {
         value1 `should not be` value2
         invoking {
             value1 `should be` value2
-        } `should throw` AssertionError::class and {
-            exception.message `should be equal to` """
+        } `should throw` AssertionError::class `with message` """
                 References should be the same
                 | Expected: TestDataClass(first=foo, second=bar)
                 | Actual: TestDataClass(first=foo, second=bar)
             """.trimIndent()
-        }
     }
 }

@@ -1,8 +1,8 @@
 package com.cerrorism.kassert.basic
 
-import com.cerrorism.kassert.exception.and
 import com.cerrorism.kassert.exception.invoking
 import com.cerrorism.kassert.exception.`should throw`
+import com.cerrorism.kassert.exception.`with message`
 import org.junit.jupiter.api.Test
 
 class SubTypesTest {
@@ -17,12 +17,10 @@ class SubTypesTest {
         value `should be instance of` SuperClass::class
         invoking {
             value `should be instance of` UnrelatedClass::class
-        } `should throw` AssertionError::class and {
-            exception.message `should be equal to` """
+        } `should throw` AssertionError::class `with message` """
                 Value should be instance of the given class
                 | Expected: ${UnrelatedClass::class}
                 | Actual: ${SubClass::class}
             """.trimIndent()
-        }
     }
 }

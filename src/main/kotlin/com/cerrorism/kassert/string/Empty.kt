@@ -11,7 +11,7 @@ fun CharSequence.`should be empty`(): CharSequence {
 }
 
 fun CharSequence.`should not be empty`(): CharSequence {
-    assertFalse(this.isEmpty(), "Expected to not be empty. Actual: $this")
+    assertFalse(this.isEmpty(), "Expected to not be empty.")
     return this
 }
 
@@ -21,7 +21,7 @@ fun CharSequence?.`should be null or empty`(): CharSequence? {
 }
 
 fun CharSequence?.`should not be null or empty`(): CharSequence? {
-    assertFalse(this.isNullOrEmpty(), "Expected to not be null or empty. Actual: $this")
+    assertFalse(this.isNullOrEmpty(), "Expected to not be null or empty.")
     return this
 }
 
@@ -31,7 +31,7 @@ fun CharSequence.`should be blank`(): CharSequence {
 }
 
 fun CharSequence.`should not be blank`(): CharSequence {
-    assertFalse(this.isBlank(), "Expected to not be blank. Actual: $this")
+    assertFalse(this.isBlank(), "Expected to not be blank.")
     return this
 }
 
@@ -41,6 +41,6 @@ fun CharSequence?.`should be null or blank`(): CharSequence? {
 }
 
 fun CharSequence?.`should not be null or blank`(): CharSequence? {
-    assertFalse(this.isNullOrBlank(), "Expected to not be null or blank. Actual: $this")
+    assertFalse(this.isNullOrBlank(), "Expected to not be null or blank.")
     return this
 }

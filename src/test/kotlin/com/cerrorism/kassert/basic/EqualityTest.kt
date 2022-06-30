@@ -1,8 +1,8 @@
 package com.cerrorism.kassert.basic
 
-import com.cerrorism.kassert.exception.and
 import com.cerrorism.kassert.exception.invoking
 import com.cerrorism.kassert.exception.`should throw`
+import com.cerrorism.kassert.exception.`with message`
 import org.junit.jupiter.api.Test
 
 class EqualityTest {
@@ -27,12 +27,10 @@ class EqualityTest {
 
         invoking {
             obj1 `should be equal to` obj2
-        } `should throw` AssertionError::class and {
-            exception.message `should be equal to` """
+        } `should throw` AssertionError::class `with message` """
                 Values should be equal
                 | Expected: $obj2
                 | Actual: $obj1
             """.trimIndent()
-        }
     }
 }

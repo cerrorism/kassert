@@ -12,18 +12,14 @@ class ExceptionTest {
     fun `exception check should work for throwing with super class exception`() {
         invoking {
             throw TestException("test exception")
-        } `should throw` Exception::class and {
-            exception.message `should be equal to` "test exception"
-        }
+        } `should throw` Exception::class `with message` "test exception"
     }
 
     @Test
     fun `exception check should work for throwing with exact class exception`() {
         invoking {
             throw TestException("test exception")
-        } `should throw` RuntimeException::class and {
-            exception.message `should be equal to` "test exception"
-        }
+        } `should throw` RuntimeException::class `with message` "test exception"
     }
 
     @Test
@@ -32,10 +28,8 @@ class ExceptionTest {
             invoking {
                 throw TestException("Kotlin RuntimeException")
             } `should throw` InterruptedException::class
-        } `should throw` AssertionError::class and {
-            exception.message `should be equal to` "Wrong Exception type thrown. " +
-                    "Expected: ${InterruptedException::class}, actual: ${TestException::class}"
-        }
+        } `should throw` AssertionError::class `with message` "Wrong Exception type thrown. " +
+                "Expected: ${InterruptedException::class}, actual: ${TestException::class}"
     }
 
     @Test
@@ -47,10 +41,9 @@ class ExceptionTest {
             invoking {
                 5 / 2
             } `should throw` InterruptedException::class
-        } `should throw` AssertionError::class and {
-            exception.message `should be equal to` "There was an Exception (type: ${InterruptedException::class})" +
-                    " expected to be thrown, but nothing was thrown."
-        }
+        } `should throw` AssertionError::class `with message`
+                "There was an Exception (type: ${InterruptedException::class})" +
+                " expected to be thrown, but nothing was thrown."
     }
 
     @Test
@@ -76,9 +69,7 @@ class ExceptionTest {
             invoking {
                 throw TestException("Kotlin RuntimeException")
             }.`should not throw`()
-        } `should throw` AssertionError::class and {
-            exception.message `should be equal to` "Expected no Exception to be thrown. " +
-                    "Actual: ${TestException::class}"
-        }
+        } `should throw` AssertionError::class `with message` "Expected no Exception to be thrown. " +
+                "Actual: ${TestException::class}"
     }
 }

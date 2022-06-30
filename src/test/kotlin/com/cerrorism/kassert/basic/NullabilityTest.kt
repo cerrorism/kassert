@@ -1,8 +1,8 @@
 package com.cerrorism.kassert.basic
 
-import com.cerrorism.kassert.exception.and
 import com.cerrorism.kassert.exception.invoking
 import com.cerrorism.kassert.exception.`should throw`
+import com.cerrorism.kassert.exception.`with message`
 import org.junit.jupiter.api.Test
 
 class NullabilityTest {
@@ -12,13 +12,11 @@ class NullabilityTest {
         value.`should not be null`()
         invoking {
             value.`should be null`()
-        } `should throw` AssertionError::class and {
-            exception.message `should be equal to` """
+        } `should throw` AssertionError::class `with message` """
                 Value should be null
                 | Expected: null
                 | Actual: 5
             """.trimIndent()
-        }
     }
 
     @Test
@@ -27,8 +25,6 @@ class NullabilityTest {
         value.`should be null`()
         invoking {
             value.`should not be null`()
-        } `should throw` AssertionError::class and {
-            exception.message `should be equal to` "Value should not be null"
-        }
+        } `should throw` AssertionError::class `with message` "Value should not be null"
     }
 }
