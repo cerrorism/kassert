@@ -1,7 +1,6 @@
 # Kassert
 
 ![Build Status](https://github.com/cerrorism/kassert/actions/workflows/build-main.yml/badge.svg)
-![Code Scan Status](https://github.com/cerrorism/kassert/actions/workflows/detekt.yml/badge.svg)
 
 Kassert is an assertion library for Kotlin. It is a rewritten and
 simplified version of [Kluent](https://markusamshove.github.io/Kluent/).

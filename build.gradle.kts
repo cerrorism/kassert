@@ -1,5 +1,6 @@
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version Kotlin.version
@@ -30,9 +31,10 @@ tasks.jacocoTestReport {
     dependsOn(tasks.test)
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+tasks.withType<KotlinCompile> {
     kotlinOptions {
         jvmTarget = Jvm.version
+        freeCompilerArgs = listOf("-Xjsr305=strict")
     }
 }
 
@@ -114,12 +116,16 @@ signing {
 
 tasks.withType<Detekt>().configureEach {
     reports {
-        html.required.set(true)
         sarif.required.set(true)
     }
     jvmTarget = Jvm.version
 }
 tasks.withType<DetektCreateBaselineTask>().configureEach {
     jvmTarget = Jvm.version
+}
+
+detekt {
+    buildUponDefaultConfig = true
+    config = files("$rootDir/detekt.yaml")
 }
 
