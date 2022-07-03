@@ -2,26 +2,26 @@
 
 package com.cerrorism.kassert.numerical
 
-fun Byte.`should be positive`(): Byte {
-    return this `should be greater than` 0
+fun Byte.`should be positive`() = apply {
+    this `should be greater than` 0
 }
 
-fun Short.`should be positive`(): Short {
-    return this `should be greater than` 0
+fun Short.`should be positive`() = apply {
+    this `should be greater than` 0
 }
 
-fun Int.`should be positive`(): Int {
-    return this `should be greater than` 0
+fun Int.`should be positive`() = apply {
+    this `should be greater than` 0
 }
 
-fun Long.`should be positive`(): Long {
-    return this `should be greater than` 0
+fun Long.`should be positive`() = apply {
+    this `should be greater than` 0
 }
 
-fun Float.`should be positive`(): Float {
-    return this `should be greater than` 0.0f
+fun Float.`should be positive`() = apply {
+    this `should be greater than` 0.0f
 }
 
-fun Double.`should be positive`(): Double {
-    return this `should be greater than` 0.0
+fun Double.`should be positive`() = apply {
+    this `should be greater than` 0.0
 }

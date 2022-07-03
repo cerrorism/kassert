@@ -12,16 +12,14 @@ fun assertTrue(actual: Boolean, message: String? = null) {
 
 fun assertFalse(actual: Boolean, message: String? = null) = assertTrue(!actual, message)
 
-fun Boolean.`should be true`(message: String? = null): Boolean {
+fun Boolean.`should be true`(message: String? = null) = apply {
     assertTrue(this, message ?: "Value should be true")
-    return this
 }
 
-fun Boolean.`should be false`(message: String? = null): Boolean {
+fun Boolean.`should be false`(message: String? = null) = apply {
     assertFalse(this, message ?: "Value should be false")
-    return this
 }
 
-fun Boolean.`should not be true`(message: String? = null): Boolean = this.`should be false`(message)
+fun Boolean.`should not be true`(message: String? = null) = this.`should be false`(message)
 
-fun Boolean.`should not be false`(message: String? = null): Boolean = this.`should be true`(message)
+fun Boolean.`should not be false`(message: String? = null) = this.`should be true`(message)
