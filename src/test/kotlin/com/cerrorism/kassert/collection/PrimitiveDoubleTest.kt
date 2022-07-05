@@ -2,7 +2,7 @@ package com.cerrorism.kassert.collection
 
 import org.junit.jupiter.api.Test
 
-class PrimitiveDouble {
+class PrimitiveDoubleTest {
 
     @Test
     fun `double array check should work`() {
