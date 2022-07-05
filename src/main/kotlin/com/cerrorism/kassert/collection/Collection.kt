@@ -7,11 +7,11 @@ import com.cerrorism.kassert.basic.assertTrue
 import com.cerrorism.kassert.util.failureDescription
 
 infix fun <T> Collection<T>.`should contain`(value: T) = apply {
-    assertTrue(this.contains(value), "Expected to contain at least one of '$value'. Actual: $this")
+    assertTrue(this.contains(value), "Expected to contain '$value'. Actual: $this")
 }
 
 infix fun <T> Collection<T>.`should not contain`(value: T) = apply {
-    assertFalse(this.contains(value), "Expected to contain none of '$value'. Actual: $this")
+    assertFalse(this.contains(value), "Expected to not contain '$value'. Actual: $this")
 }
 
 infix fun <T> Collection<T>.`should contain some`(values: Collection<T>) = apply {
