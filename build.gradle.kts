@@ -3,7 +3,7 @@ import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version Kotlin.version
+    kotlin("jvm") version 1.8.0
     id("io.gitlab.arturbosch.detekt").version(Kotlin.deteKtVersion)
     jacoco
     `maven-publish`
