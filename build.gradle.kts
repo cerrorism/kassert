@@ -1,16 +1,24 @@
-import io.gitlab.arturbosch.detekt.Detekt
-import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    kotlin("jvm") version Kotlin.version
-    id("io.gitlab.arturbosch.detekt").version(Kotlin.deteKtVersion)
-    jacoco
+    kotlin("jvm") version "2.1.10"
     `maven-publish`
     signing
 }
 
-java.sourceCompatibility = JavaVersion.VERSION_17
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+    withJavadocJar()
+    withSourcesJar()
+}
+
+kotlin {
+    jvmToolchain(21)
+}
 
 repositories {
     mavenCentral()
@@ -18,42 +26,12 @@ repositories {
 
 dependencies {
     implementation(kotlin("test"))
-
-    testImplementation(platform("org.junit:junit-bom:${Junit.version}"))
-
-    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation(libs.junit.jupiter.api)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 tasks.test {
     useJUnitPlatform()
-    finalizedBy(tasks.jacocoTestReport)
-}
-
-tasks.jacocoTestReport {
-    dependsOn(tasks.test)
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = Jvm.version
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-    }
-}
-
-jacoco {
-    toolVersion = Jvm.jacocoVersion
-}
-
-tasks.jacocoTestReport {
-    reports {
-        xml.required.set(true)
-        csv.required.set(false)
-    }
-}
-
-java {
-    withJavadocJar()
-    withSourcesJar()
 }
 
 publishing {
@@ -114,20 +92,5 @@ signing {
     val password = System.getenv("SIGNING_KEY_PASSWORD")
     useInMemoryPgpKeys(keyId, key, password)
     sign(publishing.publications["kassertLib"])
-}
-
-tasks.withType<Detekt>().configureEach {
-    reports {
-        sarif.required.set(true)
-    }
-    jvmTarget = Jvm.version
-}
-tasks.withType<DetektCreateBaselineTask>().configureEach {
-    jvmTarget = Jvm.version
-}
-
-detekt {
-    buildUponDefaultConfig = true
-    config = files("$rootDir/detekt.yaml")
 }
 
